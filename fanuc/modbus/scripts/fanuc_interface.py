@@ -8,7 +8,7 @@ from robotiq_s_model_control.msg import _SModel_robot_input  as inputMsg
 
 NUM_REGISTERS = 2
 ADDRESS_READ_START = 1
-ADDRESS_WRITE_START = 1
+ADDRESS_WRITE_START = 2
 
 pub_gripper = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output, queue_size=10)
 pub_robot = rospy.Publisher("modbus_wrapper/output",HoldingRegister,queue_size=500)
@@ -108,7 +108,7 @@ def statusInterpreter(status):
     gCUS = status.gCUS
 
     output = HoldingRegister()
-    output.data = 1
+    output.data = xrange(1,3)
     
     rospy.loginfo("Sending arrays to the modbus server")
 
@@ -143,7 +143,7 @@ if __name__=="__main__":
     rospy.loginfo("All done. Listening to inputs... Terminate by Ctrl+c")
 
     sub_fanuc = rospy.Subscriber("modbus_wrapper/input",HoldingRegister,showUpdatedRegisters,queue_size=500)
-    sub_robotiq = rospy.Subscriber("SModelRobotInput", inputMsg.SModel_robot_input, statusInterpreter, queue_size=500) 
+    sub_robotiq = rospy.Subscriber("SModelRobotInput", inputMsg.SModel_robot_input, printStatus, queue_size=500) 
 
     # Spins ROS
     rospy.spin()    
