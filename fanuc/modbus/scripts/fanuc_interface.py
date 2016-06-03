@@ -112,11 +112,11 @@ def statusInterpreter(status):
 
     if (gPOA < 50) and (gPOB < 50) and (gPOC < 50):
         # Hand Closed
-        gripperPosition = 2
+        gripperPosition = 1
 
     if (gPOA > 200) and (gPOB > 200) and (gPOC > 200):
         # Hand Open
-        gripperPosition = 1
+        gripperPosition = 2
 
     output = HoldingRegister()
     output.data = [gripperPosition,60]
