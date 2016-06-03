@@ -107,10 +107,21 @@ def statusInterpreter(status):
     ## SCISSOR CURRENT
     gCUS = status.gCUS
 
+
+    gripperPosition = 0
+
+    if (gPOA < 50) and (gPOB < 50) and (gPOC < 50):
+        # Hand Closed
+        gripperPosition = 0
+
+    if (gPOA > 200) and (gPOB > 200) and (gPOC > 200):
+        # Hand Open
+        gripperPosition = 1
+
     output = HoldingRegister()
-    output.data = [50,60]
+    output.data = [gripperPosition,60]
     
-    rospy.loginfo("Sending arrays to the modbus server")
+    rospy.loginfo("Updating Robot Registers")
 
     pub_robot.publish(output)
 
