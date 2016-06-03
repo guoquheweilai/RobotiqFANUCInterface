@@ -6,8 +6,8 @@ from std_msgs.msg import Int32MultiArray as HoldingRegister
 from robotiq_c_model_control.msg import _CModel_robot_output  as outputMsg
 
 NUM_REGISTERS = 2
-ADDRESS_READ_START = 0
-ADDRESS_WRITE_START = 0
+ADDRESS_READ_START = 1
+ADDRESS_WRITE_START = 1
 
 pub = rospy.Publisher('CModelRobotOutput', outputMsg.CModel_robot_output, queue_size=10)
 
