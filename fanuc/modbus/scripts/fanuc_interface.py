@@ -14,7 +14,7 @@ pub = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output, queue_
 def showUpdatedRegisters(msg):
     rospy.loginfo("Modbus server registers have been updated: %s",str(msg.data))
 
-    command = outputMsg.CModel_robot_output();
+    command = outputMsg.SModel_robot_output();
 
     initializeGripper = msg.data[0]
     controlGripper = msg.data[1]
@@ -26,11 +26,19 @@ def showUpdatedRegisters(msg):
     if controlGripper == 1:
         # Open Gripper
         command.rPRA = 0
+        command.rACT = 1
+        command.rGTO = 1
+        command.rSPA = 255
+        command.rFRA = 150
+
 
     if controlGripper == 2:
         # Close Gripper
         command.rPRA = 255
-
+        command.rACT = 1
+        command.rGTO = 1
+        command.rSPA = 255
+        command.rFRA = 150
 
     pub.publish(command)
 
