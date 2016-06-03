@@ -143,7 +143,7 @@ if __name__=="__main__":
     rospy.loginfo("All done. Listening to inputs... Terminate by Ctrl+c")
 
     sub_fanuc = rospy.Subscriber("modbus_wrapper/input",HoldingRegister,showUpdatedRegisters,queue_size=500)
-    sub_robotiq = rospy.Subscriber("SModelRobotInput", inputMsg.SModel_robot_input, printStatus, queue_size=500) 
+    sub_robotiq = rospy.Subscriber("SModelRobotInput", inputMsg.SModel_robot_input, statusInterpreter, queue_size=500) 
 
     # Spins ROS
     rospy.spin()    
