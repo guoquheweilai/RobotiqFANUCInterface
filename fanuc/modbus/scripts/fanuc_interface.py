@@ -108,7 +108,7 @@ def statusInterpreter(status):
     gCUS = status.gCUS
 
     output = HoldingRegister()
-    output.data = xrange(1,3)
+    output.data = [50,60]
     
     rospy.loginfo("Sending arrays to the modbus server")
 
