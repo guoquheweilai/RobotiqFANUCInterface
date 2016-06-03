@@ -43,6 +43,8 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>std_msgs</build_depend>
+  <build_depend>robotiq_c_model_control</build_depend>
+  <run_depend>robotiq_c_model_control</run_depend>
   <run_depend>std_msgs</run_depend>
 	
 

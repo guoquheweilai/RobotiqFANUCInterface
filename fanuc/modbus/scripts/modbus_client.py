@@ -75,11 +75,11 @@ if __name__=="__main__":
     #################
     # Example 1
     # Sets an individual register using the python interface, which can automatically be reset, if a timeout is given.
-    register = 40020
-    value = 1
-    timeout = 0.5
-    modclient.setOutput(register,value,timeout)
-    rospy.loginfo("Set and individual output")
+    # register = 40020
+    # value = 1
+    # timeout = 0.5
+    # modclient.setOutput(register,value,timeout)
+    # rospy.loginfo("Set and individual output")
     #################
     
     
@@ -96,24 +96,24 @@ if __name__=="__main__":
     #################
     # Example 3
     # writing to modbus registers using a standard ros publisher
-    pub = rospy.Publisher("modbus_wrapper/output",HoldingRegister,queue_size=500)
-    output = HoldingRegister()
-    output.data = xrange(20,40)
-    output2 = HoldingRegister()
-    output2.data = xrange(40,20,-1)
+    # pub = rospy.Publisher("modbus_wrapper/output",HoldingRegister,queue_size=500)
+    # output = HoldingRegister()
+    # output.data = xrange(20,40)
+    # output2 = HoldingRegister()
+    # output2.data = xrange(40,20,-1)
     
-    rospy.loginfo("Sending arrays to the modbus server")
-    while not rospy.is_shutdown():
-        rospy.sleep(1)
-        pub.publish(output)
-        rospy.sleep(1)
-        pub.publish(output2)
+    # rospy.loginfo("Sending arrays to the modbus server")
+    # while not rospy.is_shutdown():
+    #     rospy.sleep(1)
+    #     pub.publish(output)
+    #     rospy.sleep(1)
+    #     pub.publish(output2)
     #################
     
     # Stops the listener on the modbus
-    modclient.stopListening()
+    # modclient.stopListening()
     
-    
+    rospy.spin()    
    
     
     
