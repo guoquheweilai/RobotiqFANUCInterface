@@ -3,13 +3,13 @@
 import rospy
 from modbus.modbus_wrapper_client import ModbusWrapperClient 
 from std_msgs.msg import Int32MultiArray as HoldingRegister
-from robotiq_c_model_control.msg import _CModel_robot_output  as outputMsg
+from robotiq_s_model_control.msg import _SModel_robot_output  as outputMsg
 
 NUM_REGISTERS = 2
 ADDRESS_READ_START = 1
 ADDRESS_WRITE_START = 1
 
-pub = rospy.Publisher('CModelRobotOutput', outputMsg.CModel_robot_output, queue_size=10)
+pub = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output, queue_size=10)
 
 def showUpdatedRegisters(msg):
     rospy.loginfo("Modbus server registers have been updated: %s",str(msg.data))
@@ -25,11 +25,12 @@ def showUpdatedRegisters(msg):
 
     if controlGripper == 1:
         # Open Gripper
-        command.rPR = 0   
+        command.rPRA = 0
 
     if controlGripper == 2:
         # Close Gripper
-        command.rPR = 255
+        command.rPRA = 255
+
 
     pub.publish(command)
 

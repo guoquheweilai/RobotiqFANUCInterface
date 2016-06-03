@@ -6,7 +6,7 @@ project(modbus)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   std_msgs
-  robotiq_c_model_control
+  robotiq_s_model_control
 )
 
 ## System dependencies are found with CMake's conventions
