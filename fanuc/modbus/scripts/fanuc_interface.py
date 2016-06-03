@@ -6,7 +6,7 @@ from std_msgs.msg import Int32MultiArray as HoldingRegister
 from robotiq_s_model_control.msg import _SModel_robot_output  as outputMsg
 from robotiq_s_model_control.msg import _SModel_robot_input  as inputMsg
 
-NUM_REGISTERS = 2
+NUM_REGISTERS = 1
 ADDRESS_READ_START = 1
 ADDRESS_WRITE_START = 3
 
@@ -108,18 +108,39 @@ def statusInterpreter(status):
     gCUS = status.gCUS
 
 
-    gripperPosition = 0
+    gripperStatus = 0
+    handClosed = False
+    handMoving = False
 
     if (gPOA < 50) and (gPOB < 50) and (gPOC < 50):
-        # Hand Closed
-        gripperPosition = 1
+        # Hand Open
+        handClosed = False
 
     if (gPOA > 200) and (gPOB > 200) and (gPOC > 200):
-        # Hand Open
-        gripperPosition = 2
+        # Hand Closed
+        handClosed = True
+
+    if (gDTA == 0) and (gDTA == 0) and (gDTA == 0):
+        handMoving = True
+
+    if (gDTA == 3) and (gDTA == 3) and (gDTA == 3):
+        handMoving = False
+
+    if not handMoving and not handClosed:
+        gripperStatus = 0
+
+    if not handMoving and handClosed:
+        gripperStatus = 1
+
+    if handMoving and not handClosed:
+        gripperStatus = 2
+
+    if handMoving and handClosed:
+        gripperStatus = 3
+
 
     output = HoldingRegister()
-    output.data = [gripperPosition,60]
+    output.data = [gripperStatus]
     
     rospy.loginfo("Updating Robot Registers")
 
