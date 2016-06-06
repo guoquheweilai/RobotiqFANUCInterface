@@ -1,6 +1,6 @@
 # Robotiq FANUC Interface
 
-TODO: Write a project description
+Modbus interface to allow communication between a Robotiq gripper and a Fanuc robotic arm
 
 ## Table of Contents
 
@@ -71,6 +71,8 @@ TODO: Write a project description
   |          1          |    0    |    1    |   Do Nothing  |
   |          2          |    1    |    0    |  Open Gripper |
   |          3          |    1    |    1    | Close Gripper |
+  
+  NOTE: To perform movements on the gripper, make sure to set the 2nd bit of *Initialise Gripper [1]* to 0.  
 
   
     **Status**: Read the third and forth registers to get information on the status and movement of the gripper. 
