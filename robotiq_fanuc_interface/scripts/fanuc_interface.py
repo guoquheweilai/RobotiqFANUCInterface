@@ -24,10 +24,12 @@ def showUpdatedRegisters(msg):
 
     # Reset Gripper
     if initializeGripper == 2:
+        print "Reset Gripper"
         command.rACT = 0
 
     # Initialize Gripper
     if initializeGripper == 3:
+        print "Initialize Gripper"
         command.rACT == 1
         command.rGTO == 1
         command.rSPA == 255
@@ -35,6 +37,7 @@ def showUpdatedRegisters(msg):
 
     # Open Gripper
     if controlGripper == 2:
+        print "Open Gripper"
         command.rPRA = 0
         command.rACT = 1
         command.rGTO = 1
@@ -43,6 +46,7 @@ def showUpdatedRegisters(msg):
 
     # Close Gripper
     if controlGripper == 3:
+        print "Close Gripper"
         command.rPRA = 255
         command.rACT = 1
         command.rGTO = 1
