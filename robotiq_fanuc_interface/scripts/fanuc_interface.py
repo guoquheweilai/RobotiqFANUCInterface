@@ -22,16 +22,16 @@ def showUpdatedRegisters(msg):
     initializeGripper = msg.data[0]
     controlGripper = msg.data[1]
 
-    # # Reset Gripper
-    # if initializeGripper == 2:
-    #     command.rACT = 0
+    # Reset Gripper
+    if initializeGripper == 2:
+        command.rACT = 0
 
-    # # Initialize Gripper
-    # if initializeGripper == 3:
-    #     command.rACT == 1
-    #     command.rGTO == 1
-    #     command.rSPA == 255
-    #     command.rFRA == 150
+    # Initialize Gripper
+    if initializeGripper == 3:
+        command.rACT == 1
+        command.rGTO == 1
+        command.rSPA == 255
+        command.rFRA == 150
 
     # Open Gripper
     if controlGripper == 2:
