@@ -32,7 +32,6 @@ def showUpdatedRegisters(msg):
         command.rGTO == 1
         command.rSPA == 255
         command.rFRA == 150
-        pass
 
     # Open Gripper
     if controlGripper == 2:
