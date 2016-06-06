@@ -4,10 +4,5 @@
 # The 'wstool' utility is the preferred way of adding elements to this file. To
 # add all repositories from an existing workspace, you can use `wstool scrape`.
 
-- git:
-    local-name: robotiq
-    uri: https://github.com/ros-industrial/robotiq.git
-
--git:
-    local-name: modbus
-    uri: https://github.com/HumaRobotics/modbus.git
+- git: { local-name: robotiq, uri: https://github.com/ros-industrial/robotiq.git }
+- git: { local-name: modbus, uri: https://github.com/HumaRobotics/modbus.git }
