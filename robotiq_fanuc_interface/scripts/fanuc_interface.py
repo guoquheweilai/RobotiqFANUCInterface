@@ -35,11 +35,8 @@ def showUpdatedRegisters(msg):
         command.rSPA = 255
         command.rFRA = 150
 
-    else:
-        pass
-
     # Open Gripper
-    if controlGripper == 2:
+    elif controlGripper == 2:
         print "Open Gripper"
         command.rPRA = 0
         command.rACT = 1
@@ -57,6 +54,7 @@ def showUpdatedRegisters(msg):
         command.rFRA = 50 # Force
 
     else:
+        print "Invalid Option Selected!"
         return
 
 
