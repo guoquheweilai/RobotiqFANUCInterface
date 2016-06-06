@@ -14,7 +14,7 @@ pub_gripper = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output
 pub_robot = rospy.Publisher("modbus_wrapper/output", HoldingRegister,queue_size=500)
 
 def showUpdatedRegisters(msg):
-    
+
     rospy.loginfo("Modbus server registers have been updated: %s",str(msg.data))
 
     command = outputMsg.SModel_robot_output();
@@ -22,60 +22,90 @@ def showUpdatedRegisters(msg):
     initializeGripper = msg.data[0]
     controlGripper = msg.data[1]
 
-    if initializeGripper == 1:
-        # Initialize Gripper
+    # Reset Gripper
+    if initializeGripper == 2:
+        command.rACT = 0
+
+    # Initialize Gripper
+    if initializeGripper == 3:
+        command.rACT == 1
+        command.rGTO == 1
+        command.rSPA == 255
+        command.rFRA == 150
         pass
 
-    if controlGripper == 1:
-        # Open Gripper
+    # Open Gripper
+    if controlGripper == 2:
         command.rPRA = 0
         command.rACT = 1
         command.rGTO = 1
-        command.rSPA = 255
-        command.rFRA = 150
+        command.rSPA = 55 # Speed
+        command.rFRA = 50 # Force
 
-
-    if controlGripper == 2:
-        # Close Gripper
+    # Close Gripper
+    if controlGripper == 3:
         command.rPRA = 255
         command.rACT = 1
         command.rGTO = 1
-        command.rSPA = 255
-        command.rFRA = 150
+        command.rSPA = 55 # Speed
+        command.rFRA = 50 # Force
 
     pub_gripper.publish(command)
 
 def statusInterpreter(status):
 
+    # Variable Initialization
+    gripperStatus = 0
+    gripperMovement = 0
+
+    # Gripper Reset
+    if (status.gACT == 0) and (status.gIMC == 0)
+        gripperStatus = 0
+
+    # Gripper Activating
+    if (status.gACT == 1) and (status.gIMC == 1) and (status.gSTA == 0)
+        gripperStatus = 1
+
+    # Gripper Activated
+    if (status.gACT == 1) and (status.gIMC == 3) 
+        gripperStatus = 2
+
+    # Gripper Open
     if (status.gPOA < 50) and (status.gPOB < 50) and (status.gPOC < 50):
-        # Hand Open
         handClosed = False
 
+    # Gripper Closed
     if (status.gPOA > 200) and (status.gPOB > 200) and (status.gPOC > 200):
-        # Hand Closed
         handClosed = True
 
+    # Gripper Moving
     if (status.gDTA == 0) and (status.gDTA == 0) and (status.gDTA == 0):
         handMoving = True
 
+    # Gripper Stopped
     if (status.gDTA == 3) and (status.gDTA == 3) and (status.gDTA == 3):
         handMoving = False
 
-    if not handMoving and not handClosed:
-        gripperStatus = 0
 
-    if not handMoving and handClosed:
-        gripperStatus = 1
-
+    # Hand Moving and Opening
     if handMoving and not handClosed:
-        gripperStatus = 2
+        gripperMovement = 0
 
+    # Hand Moving and Closing
     if handMoving and handClosed:
-        gripperStatus = 3
+        gripperMovement = 1
+
+    # Hand Stoppend and Open
+    if not handMoving and not handClosed:
+        gripperMovement = 2
+
+    # Hand Stopped and Closed
+    if not handMoving and handClosed:
+        gripperMovement = 3
 
 
     output = HoldingRegister()
-    output.data = [gripperStatus]
+    output.data = [gripperStatus, gripperMovement]
     
     rospy.loginfo("Updating Robot Registers")
 
