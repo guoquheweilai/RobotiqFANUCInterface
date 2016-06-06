@@ -12,7 +12,27 @@ TODO: Write a project description
 
 ## <a name="installation"></a>Installation
 
-TODO: Describe the installation process
+1. Install [robotiq ROS package](http://wiki.ros.org/robotiq).
+
+  This package provides ROS drivers for the  Robotiq Adaptive Grippers.
+
+2. Install [modbus ROS package](http://wiki.ros.org/modbus).
+
+  This package stack provides a wrapper from the modbus TCP communication to standardized ROS messages
+
+3. Download the [RobotiqFANUCInterface](https://github.com/rarrais/RobotiqFANUCInterface.git) repository to the src folder of your catkin workspace.
+
+  ```bash
+  cd ~/catkin_ws/src
+  git clone https://github.com/rarrais/RobotiqFANUCInterface.git
+  ```
+  
+4. Build your code. Assuming your catkin workspace is located in ~/catkin_ws:
+
+  ```bash
+  cd ~/catkin_ws
+  catkin_make
+  ```
 
 ## <a name="usage"></a> Usage
 
@@ -25,8 +45,6 @@ TODO: Write history
 
 ## <a name="credits"></a>Credits
 
-TODO: Write credits
-
-## <a name="license"></a>License
-
-TODO: Write license
+* Developed by [Rafael Arrais](https://github.com/rarrais). 
+* Robotiq ROS Package by [Shaun Edwards](https://github.com/shaun-edwards). 
+* Modbus ROS Package by [Sven Bock](https://github.com/sven-bock). 
