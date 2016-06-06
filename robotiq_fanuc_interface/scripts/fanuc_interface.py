@@ -70,11 +70,11 @@ def statusInterpreter(status):
         gripperStatus = 2
 
     # Gripper Open
-    if (status.gPOA < 50) and (status.gPOB < 50) and (status.gPOC < 50):
+    if (status.gPOA < 127) and (status.gPOB < 127) and (status.gPOC < 127):
         handClosed = False
 
     # Gripper Closed
-    if (status.gPOA > 200) and (status.gPOB > 200) and (status.gPOC > 200):
+    if (status.gPOA >= 127) and (status.gPOB >= 127) and (status.gPOC >= 127):
         handClosed = True
 
     # Gripper Moving
