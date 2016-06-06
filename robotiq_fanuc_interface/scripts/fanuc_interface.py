@@ -59,15 +59,15 @@ def statusInterpreter(status):
     gripperMovement = 0
 
     # Gripper Reset
-    if (status.gACT == 0) and (status.gIMC == 0)
+    if (status.gACT == 0) and (status.gIMC == 0):
         gripperStatus = 0
 
     # Gripper Activating
-    if (status.gACT == 1) and (status.gIMC == 1) and (status.gSTA == 0)
+    if (status.gACT == 1) and (status.gIMC == 1) and (status.gSTA == 0):
         gripperStatus = 1
 
     # Gripper Activated
-    if (status.gACT == 1) and (status.gIMC == 3) 
+    if (status.gACT == 1) and (status.gIMC == 3):
         gripperStatus = 2
 
     # Gripper Open
