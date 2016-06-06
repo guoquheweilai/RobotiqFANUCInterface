@@ -11,9 +11,10 @@ ADDRESS_READ_START = 1
 ADDRESS_WRITE_START = 3
 
 pub_gripper = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output, queue_size=10)
-pub_robot = rospy.Publisher("modbus_wrapper/output",HoldingRegister,queue_size=500)
+pub_robot = rospy.Publisher("modbus_wrapper/output", HoldingRegister,queue_size=500)
 
 def showUpdatedRegisters(msg):
+    
     rospy.loginfo("Modbus server registers have been updated: %s",str(msg.data))
 
     command = outputMsg.SModel_robot_output();
@@ -46,84 +47,18 @@ def showUpdatedRegisters(msg):
 
 def statusInterpreter(status):
 
-    ## GRIPPER STATUS
-    # Initialization status, echo of the rACT bit (activation bit).
-    gACT = status.gACT
-
-    # Operation Mode status, echo of the rMOD bits (grasping mode requested).
-    gMOD = status.gMOD
-
-    # Action status, echo of the rGTO bit (go to bit).
-    gGTO = status.gGTO
-
-    # Gripper status, returns the current status of the Gripper.
-    gIMC = status.gIMC
-
-    # Gripper status, returns the current status & motion of the Gripper fingers.
-    gSTA = status.gSTA
-
-    ## OBJECT STATUS
-    gDTA = status.gDTA
-    gDTB = status.gDTB
-    gDTC = status.gDTC
-    gDTS = status.gDTS
-
-    ## FAULT STATUS
-    gFLT = status.gFLT
-
-    ## POSITION REQUEST ECHO (FINGER A IN INDIVIDUAL MODE)
-    gPRA = status.gPRA
-
-    ## FINGER A POSITION
-    gPOA = status.gPOA
-
-    ## FINGER A CURRENT
-    gCUA = status.gCUA
-
-    ## FINGER B POSITION REQUEST ECHO 
-    gPRB = status.gPRB
-
-    ## FINGER B POSITION
-    gPOB = status.gPOB
-
-    ## FINGER B CURRENT
-    gCUB = status.gCUB
-
-    ## FINGER C POSITION REQUEST ECHO
-    gPRC = status.gPRC
-
-    ## FINGER C POSITION
-    gPOC = status.gPOC
-
-    ## FINGER C CURRENT
-    gCUC = status.gCUC
-
-    ## SCISSOR POSITION REQUEST ECHO
-    gPRS = status.gPRS
-
-    ## SCISSOR POSITION
-    gPOS = status.gPOS
-
-    ## SCISSOR CURRENT
-    gCUS = status.gCUS
-
-
-    gripperStatus = 0
-    handClosed = False
-    handMoving = False
-
-    if (gPOA < 50) and (gPOB < 50) and (gPOC < 50):
+    if (status.gPOA < 50) and (status.gPOB < 50) and (status.gPOC < 50):
         # Hand Open
         handClosed = False
 
-    if (gPOA > 200) and (gPOB > 200) and (gPOC > 200):
+    if (status.gPOA > 200) and (status.gPOB > 200) and (status.gPOC > 200):
         # Hand Closed
         handClosed = True
 
-    if (gDTA == 0) and (gDTA == 0) and (gDTA == 0):
+    if (status.gDTA == 0) and (status.gDTA == 0) and (status.gDTA == 0):
         handMoving = True
 
-    if (gDTA == 3) and (gDTA == 3) and (gDTA == 3):
+    if (status.gDTA == 3) and (status.gDTA == 3) and (status.gDTA == 3):
         handMoving = False
 
     if not handMoving and not handClosed:
@@ -147,6 +82,7 @@ def statusInterpreter(status):
     pub_robot.publish(output)
 
 if __name__=="__main__":
+
     rospy.init_node("modbus_client")
     host = "172.16.7.4"
     port = 502
