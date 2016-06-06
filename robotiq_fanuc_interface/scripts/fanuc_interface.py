@@ -146,7 +146,6 @@ def statusInterpreter(status):
 
     pub_robot.publish(output)
 
-
 if __name__=="__main__":
     rospy.init_node("modbus_client")
     host = "172.16.7.4"

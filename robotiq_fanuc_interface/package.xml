@@ -1,33 +1,31 @@
 <?xml version="1.0"?>
 <package>
-  <name>modbus</name>
+  <name>robotiq_fanuc_interface</name>
   <version>0.0.0</version>
-  <description>The modbus package</description>
+  <description>The robotiq_fanuc_interface package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="sb@generationrobots.com">Sven Bock</maintainer>
-  <maintainer email="wb@generationrobots.com">Wagdi Ben yaala</maintainer>
-
+  <maintainer email="rafaelarrais@todo.todo">rafaelarrais</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>BSD</license>
+  <license>TODO</license>
 
 
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <url type="website">http://wiki.ros.org/modbus/modbus</url>
+  <!-- <url type="website">http://wiki.ros.org/robotiq_fanuc_interface</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
   <!-- Authors do not have to be maintianers, but could be -->
   <!-- Example: -->
-  <author email="sb@generationrobots.com">Sven Bock</author> -->
+  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
 
 
   <!-- The *_depend tags are used to specify dependencies -->
@@ -42,15 +40,19 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>std_msgs</build_depend>
+  <build_depend>modbus</build_depend>
   <build_depend>robotiq_s_model_control</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>modbus</run_depend>
   <run_depend>robotiq_s_model_control</run_depend>
+  <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
-	
 
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <rosdoc config="rosdoc.yaml" />
+    <!-- Other tools can request additional information be placed here -->
+
   </export>
 </package>
