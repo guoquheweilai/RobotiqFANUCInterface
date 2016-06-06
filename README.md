@@ -53,6 +53,36 @@ TODO: Write a project description
   ```bash
   rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
   ```
+  
+  | Initialise Gripper [1] | 2nd bit | 1st bit |      Command     |
+  |:----------------------:|:-------:|:-------:|:----------------:|
+  |            0           |    0    |    0    |    Do Nothing    |
+  |            1           |    0    |    1    |    Do Nothing    |
+  |            2           |    1    |    0    |   Reset Gripper  |
+  |            3           |    1    |    1    | Activate Gripper |
+  
+  | Control Gripper [2] | 2nd bit | 1st bit |    Command    |
+  |:-------------------:|:-------:|:-------:|:-------------:|
+  |          0          |    0    |    0    |   Do Nothing  |
+  |          1          |    0    |    1    |   Do Nothing  |
+  |          2          |    1    |    0    |  Open Gripper |
+  |          3          |    1    |    1    | Close Gripper |
+  
+  | Gripper Status [3] | 2nd bit | 1st bit |       Status       |
+  |:------------------:|:-------:|:-------:|:------------------:|
+  |          0         |    0    |    0    |    Gripper Reset   |
+  |          1         |    0    |    1    | Gripper Activating |
+  |          2         |    1    |    0    |  Gripper Activated |
+  |          3         |    1    |    1    |      Not Used      |
+  
+  | Gripper Movement [4] | Moving (0) /  Stopped (1) | Open (0) / Close (1) |       Status      |
+  |:--------------------:|:-------------------------:|:--------------------:|:-----------------:|
+  |           0          |             0             |           0          |  Moving and Open  |
+  |           1          |             0             |           1          | Moving and Closed |
+  |           2          |             1             |           0          |  Stopped and Open |
+  |           3          |             1             |           1          | Stopped and Close |
+  
+  
 
 
 ## <a name="history"></a>History
