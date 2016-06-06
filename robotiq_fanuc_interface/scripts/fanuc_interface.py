@@ -22,16 +22,16 @@ def showUpdatedRegisters(msg):
     initializeGripper = msg.data[0]
     controlGripper = msg.data[1]
 
-    # Reset Gripper
-    if initializeGripper == 2:
-        command.rACT = 0
+    # # Reset Gripper
+    # if initializeGripper == 2:
+    #     command.rACT = 0
 
-    # Initialize Gripper
-    if initializeGripper == 3:
-        command.rACT == 1
-        command.rGTO == 1
-        command.rSPA == 255
-        command.rFRA == 150
+    # # Initialize Gripper
+    # if initializeGripper == 3:
+    #     command.rACT == 1
+    #     command.rGTO == 1
+    #     command.rSPA == 255
+    #     command.rFRA == 150
 
     # Open Gripper
     if controlGripper == 2:
@@ -126,9 +126,9 @@ if __name__=="__main__":
         rospy.loginfo("For not using the default port %d, add an arg e.g.: '_port:=1234'",port)
 
     # setup modbus client    
-    modclient = ModbusWrapperClient(host,port=port,rate=1,reset_registers=False,sub_topic="modbus_wrapper/output",pub_topic="modbus_wrapper/input")
-    modclient.setReadingRegisters(ADDRESS_READ_START,NUM_REGISTERS)
-    modclient.setWritingRegisters(ADDRESS_WRITE_START,NUM_REGISTERS)
+    modclient = ModbusWrapperClient(host, port=port, rate=1, reset_registers=False, sub_topic="modbus_wrapper/output", pub_topic="modbus_wrapper/input")
+    modclient.setReadingRegisters(ADDRESS_READ_START, NUM_REGISTERS)
+    modclient.setWritingRegisters(ADDRESS_WRITE_START, NUM_REGISTERS)
     rospy.loginfo("Setup complete")
     
     # start listening to modbus and publish changes to the rostopic
@@ -138,7 +138,7 @@ if __name__=="__main__":
     # Create a listener that show us a message if anything on the readable modbus registers change
     rospy.loginfo("All done. Listening to inputs... Terminate by Ctrl+c")
 
-    sub_fanuc = rospy.Subscriber("modbus_wrapper/input",HoldingRegister,showUpdatedRegisters,queue_size=500)
+    sub_fanuc = rospy.Subscriber("modbus_wrapper/input", HoldingRegister, showUpdatedRegisters, queue_size=500)
     sub_robotiq = rospy.Subscriber("SModelRobotInput", inputMsg.SModel_robot_input, statusInterpreter, queue_size=500) 
 
     # Spins ROS
