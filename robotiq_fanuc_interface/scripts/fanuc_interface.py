@@ -6,7 +6,7 @@ from std_msgs.msg import Int32MultiArray as HoldingRegister
 from robotiq_s_model_control.msg import _SModel_robot_output  as outputMsg
 from robotiq_s_model_control.msg import _SModel_robot_input  as inputMsg
 
-NUM_REGISTERS = 1
+NUM_REGISTERS = 2
 ADDRESS_READ_START = 1
 ADDRESS_WRITE_START = 3
 
