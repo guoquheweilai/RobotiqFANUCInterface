@@ -28,12 +28,15 @@ def showUpdatedRegisters(msg):
         command.rACT = 0
 
     # Initialize Gripper
-    if initializeGripper == 3:
+    elif initializeGripper == 3:
         print "Initialize Gripper"
         command.rACT = 1
         command.rGTO = 1
         command.rSPA = 255
         command.rFRA = 150
+
+    else:
+        pass
 
     # Open Gripper
     if controlGripper == 2:
@@ -45,13 +48,17 @@ def showUpdatedRegisters(msg):
         command.rFRA = 50 # Force
 
     # Close Gripper
-    if controlGripper == 3:
+    elif controlGripper == 3:
         print "Close Gripper"
         command.rPRA = 255
         command.rACT = 1
         command.rGTO = 1
         command.rSPA = 55 # Speed
         command.rFRA = 50 # Force
+
+    else:
+        return
+
 
     pub_gripper.publish(command)
 
