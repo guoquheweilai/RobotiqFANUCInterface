@@ -15,7 +15,7 @@ pub_robot = rospy.Publisher("modbus_wrapper/output", HoldingRegister,queue_size=
 
 def showUpdatedRegisters(msg):
 
-    rospy.loginfo("Modbus server registers have been updated: %s",str(msg.data))
+    rospy.loginfo("Modbus server registers have been updated (Initialize / Control): %s",str(msg.data))
 
     command = outputMsg.SModel_robot_output();
 
@@ -24,12 +24,12 @@ def showUpdatedRegisters(msg):
 
     # Reset Gripper
     if initializeGripper == 2:
-        print "Reset Gripper"
+        rospy.loginfo("Reset Gripper")
         command.rACT = 0
 
     # Initialize Gripper
     elif initializeGripper == 3:
-        print "Initialize Gripper"
+        rospy.loginfo("Initialize Gripper")
         command.rACT = 1
         command.rGTO = 1
         command.rSPA = 255
@@ -37,7 +37,7 @@ def showUpdatedRegisters(msg):
 
     # Open Gripper
     elif controlGripper == 2:
-        print "Open Gripper"
+        rospy.loginfo("Open Gripper")
         command.rPRA = 0
         command.rACT = 1
         command.rGTO = 1
@@ -46,7 +46,7 @@ def showUpdatedRegisters(msg):
 
     # Close Gripper
     elif controlGripper == 3:
-        print "Close Gripper"
+        rospy.loginfo("Close Gripper")
         command.rPRA = 255
         command.rACT = 1
         command.rGTO = 1
@@ -54,7 +54,7 @@ def showUpdatedRegisters(msg):
         command.rFRA = 50 # Force
 
     else:
-        print "Invalid Option Selected!"
+        rospy.logwarn("Invalid Option Selected!")
         return
 
 
@@ -115,7 +115,7 @@ def statusInterpreter(status):
     output = HoldingRegister()
     output.data = [gripperStatus, gripperMovement]
     
-    rospy.loginfo("Updating Robot Registers")
+    # rospy.loginfo("Updating Robot Registers")
 
     pub_robot.publish(output)
 
