@@ -36,7 +36,23 @@ TODO: Write a project description
 
 ## <a name="usage"></a> Usage
 
-TODO: Write usage instructions
+1. Initialize the **robotiq ROS modbus node**. Make sure to substitute the gripper IP address.
+
+  ```bash
+  rosrun robotiq_s_model_control SModelTcpNode.py <gripper_ip_address>
+  ```
+  
+  The default robotic gripper IP address is 192.168.1.11. To connect with this IP address execute the following command:
+
+  ```bash
+  rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
+  ```
+
+2. Initialize the **robotiq fanuc interface ROS modbus node**. Make sure to substitute the robot IP address.
+
+  ```bash
+  rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
+  ```
 
 
 ## <a name="history"></a>History
