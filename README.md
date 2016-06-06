@@ -48,6 +48,12 @@ TODO: Write a project description
   rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
   ```
 
+2. Initialize the **robotiq fanuc interface ROS modbus node**. Make sure to substitute the robot IP address.
+
+  ```bash
+  rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
+  ```
+
 
 ## <a name="history"></a>History
 
