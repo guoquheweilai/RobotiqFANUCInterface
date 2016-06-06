@@ -20,6 +20,19 @@ TODO: Write a project description
 
   This package stack provides a wrapper from the modbus TCP communication to standardized ROS messages
 
+3. Download the [RobotiqFANUCInterface](https://github.com/rarrais/RobotiqFANUCInterface.git) repository to the src folder of your catkin workspace.
+
+  ```bash
+  git clone https://github.com/rarrais/RobotiqFANUCInterface.git
+  ```
+  
+4. Build your code. Assuming your catkin workspace is located in ~/catkin_ws:
+
+  ```bash
+  cd ~/catkin_ws
+  catkin_make
+  ```
+
 ## <a name="usage"></a> Usage
 
 TODO: Write usage instructions
