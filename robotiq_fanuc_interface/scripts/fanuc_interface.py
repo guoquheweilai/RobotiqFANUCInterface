@@ -30,10 +30,10 @@ def showUpdatedRegisters(msg):
     # Initialize Gripper
     if initializeGripper == 3:
         print "Initialize Gripper"
-        command.rACT == 1
-        command.rGTO == 1
-        command.rSPA == 255
-        command.rFRA == 150
+        command.rACT = 1
+        command.rGTO = 1
+        command.rSPA = 255
+        command.rFRA = 150
 
     # Open Gripper
     if controlGripper == 2:
