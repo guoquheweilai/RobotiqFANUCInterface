@@ -7,3 +7,6 @@
 - git:
     local-name: robotiq
     uri: https://github.com/ros-industrial/robotiq.git
+
+    local-name: modbus
+    uri: https://github.com/HumaRobotics/modbus.git
