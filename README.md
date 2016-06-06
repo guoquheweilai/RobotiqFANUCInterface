@@ -23,6 +23,7 @@ TODO: Write a project description
 3. Download the [RobotiqFANUCInterface](https://github.com/rarrais/RobotiqFANUCInterface.git) repository to the src folder of your catkin workspace.
 
   ```bash
+  cd ~/catkin_ws/src
   git clone https://github.com/rarrais/RobotiqFANUCInterface.git
   ```
   
