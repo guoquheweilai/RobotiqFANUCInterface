@@ -126,7 +126,7 @@ if __name__=="__main__":
         rospy.loginfo("For not using the default port %d, add an arg e.g.: '_port:=1234'",port)
 
     # setup modbus client    
-    modclient = ModbusWrapperClient(host,port=port,rate=50,reset_registers=False,sub_topic="modbus_wrapper/output",pub_topic="modbus_wrapper/input")
+    modclient = ModbusWrapperClient(host,port=port,rate=1,reset_registers=False,sub_topic="modbus_wrapper/output",pub_topic="modbus_wrapper/input")
     modclient.setReadingRegisters(ADDRESS_READ_START,NUM_REGISTERS)
     modclient.setWritingRegisters(ADDRESS_WRITE_START,NUM_REGISTERS)
     rospy.loginfo("Setup complete")
