@@ -54,6 +54,10 @@ TODO: Write a project description
   rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
   ```
   
+3. It is possible to control the gripper using the robot Modbus registers. There are two bytes for controlling the gripper and two bytes for getting the status of the gripper.
+
+  **Commands**: Set the first two registers (starting at 1) to control the initialization and movement of the gripper. 
+  
   | Initialise Gripper [1] | 2nd bit | 1st bit |      Command     |
   |:----------------------:|:-------:|:-------:|:----------------:|
   |            0           |    0    |    0    |    Do Nothing    |
@@ -67,6 +71,9 @@ TODO: Write a project description
   |          1          |    0    |    1    |   Do Nothing  |
   |          2          |    1    |    0    |  Open Gripper |
   |          3          |    1    |    1    | Close Gripper |
+
+  
+    **Status**: Read the third and forth registers to get information on the status and movement of the gripper. 
   
   | Gripper Status [3] | 2nd bit | 1st bit |       Status       |
   |:------------------:|:-------:|:-------:|:------------------:|
