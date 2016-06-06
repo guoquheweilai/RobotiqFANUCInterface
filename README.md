@@ -96,7 +96,7 @@ Modbus interface to allow communication between a Robotiq gripper and a Fanuc ro
 
 ## <a name="history"></a>History
 
-TODO: Write history
+* **June 6, 2016**: Version 1.0 released. Tested with the S-Model of the Robotiq Gripper and with a fake modbus slave, simulating the robot.
 
 ## <a name="credits"></a>Credits
 
