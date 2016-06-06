@@ -46,3 +46,5 @@ TODO: Write history
 ## <a name="credits"></a>Credits
 
 * Developed by [Rafael Arrais](https://github.com/rarrais). 
+* Robotiq ROS Package by [Shaun Edwards](https://github.com/shaun-edwards). 
+* Modbus ROS Package by [Sven Bock](https://github.com/sven-bock). 
