@@ -12,7 +12,13 @@ TODO: Write a project description
 
 ## <a name="installation"></a>Installation
 
-TODO: Describe the installation process
+1. Install [robotiq ROS package](http://wiki.ros.org/robotiq).
+
+  This package provides ROS drivers for the  Robotiq Adaptive Grippers.
+
+2. Install [modbus ROS package](http://wiki.ros.org/modbus).
+
+  This package stack provides a wrapper from the modbus TCP communication to standardized ROS messages
 
 ## <a name="usage"></a> Usage
 
@@ -25,8 +31,4 @@ TODO: Write history
 
 ## <a name="credits"></a>Credits
 
-TODO: Write credits
-
-## <a name="license"></a>License
-
-TODO: Write license
+* Developed by [Rafael Arrais](https://github.com/rarrais). 
