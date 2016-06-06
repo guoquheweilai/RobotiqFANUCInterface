@@ -36,7 +36,7 @@ TODO: Write a project description
 
 ## <a name="usage"></a> Usage
 
-1. Initialize the robotiq ROS modbus node. Make sure to substitute the gripper IP address.
+1. Initialize the *robotiq ROS modbus node*. Make sure to substitute the gripper IP address.
 
   ```bash
   rosrun robotiq_s_model_control SModelTcpNode.py <gripper_ip_address>
