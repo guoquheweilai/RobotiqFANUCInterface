@@ -54,7 +54,7 @@ Modbus interface to allow communication between a Robotiq gripper and a Fanuc ro
   rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
   ```
   
-3. It is possible to control the gripper using the robot Modbus registers. There are two bytes for controlling the gripper and two bytes for getting the status of the gripper.
+3. It is possible to control the gripper using the robot Modbus registers. There are two registers for controlling the gripper and two registers for getting the status of the gripper.
 
   **Commands**: Set the first two registers (starting at 1) to control the initialization and movement of the gripper. 
   
@@ -96,7 +96,7 @@ Modbus interface to allow communication between a Robotiq gripper and a Fanuc ro
 
 ## <a name="history"></a>History
 
-TODO: Write history
+* **June 6, 2016**: Version 1.0 released. Tested with the S-Model of the Robotiq Gripper and with a fake modbus slave, simulating the robot.
 
 ## <a name="credits"></a>Credits
 
