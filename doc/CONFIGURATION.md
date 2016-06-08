@@ -1,105 +1,60 @@
-# Robotiq FANUC Interface
+# FANUC Robot Configuration
 
-Modbus interface to allow communication between a Robotiq gripper and a Fanuc robotic arm
+Follow the Modbus TCP Interface Operators Manual to define the TCP/IP Interface and the Modbus protocol. Refer to the following steps for configuring the internal data arrangement. 
 
-## Table of Contents
+## TCP/IP
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [History](#history)
-* [Credits](#credits)
-* [License](#license)
+1. Press MENUS.
+2. Select Setup.
+3. Press F1, [TYPE], and select Host Comm. Next, select TCP / IP. You will see a screen similar to the following.
 
-## <a name="installation"></a>Installation
+Note: Make sure to alter the Robot IP Address to match your network.
 
-1. Install [robotiq ROS package](http://wiki.ros.org/robotiq).
+## Modbus Settings
 
-  This package provides ROS drivers for the  Robotiq Adaptive Grippers.
-
-2. Install [modbus ROS package](http://wiki.ros.org/modbus).
-
-  This package stack provides a wrapper from the modbus TCP communication to standardized ROS messages
-
-3. Download the [RobotiqFANUCInterface](https://github.com/rarrais/RobotiqFANUCInterface.git) repository to the src folder of your catkin workspace.
-
-  ```bash
-  cd ~/catkin_ws/src
-  git clone https://github.com/rarrais/RobotiqFANUCInterface.git
-  ```
-  
-4. Build your code. Assuming your catkin workspace is located in ~/catkin_ws:
-
-  ```bash
-  cd ~/catkin_ws
-  catkin_make
-  ```
-
-## <a name="usage"></a> Usage
-
-1. Initialize the **robotiq ROS modbus node**. Make sure to substitute the gripper IP address.
-
-  ```bash
-  rosrun robotiq_s_model_control SModelTcpNode.py <gripper_ip_address>
-  ```
-  
-  The default robotic gripper IP address is 192.168.1.11. To connect with this IP address execute the following command:
-
-  ```bash
-  rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
-  ```
-
-2. Initialize the **robotiq fanuc interface ROS modbus node**. Make sure to substitute the robot IP address.
-
-  ```bash
-  rosrun robotiq_fanuc_interface fanuc_interface.py _ip:=<robot_ip_address>
-  ```
-  
-3. It is possible to control the gripper using the robot Modbus registers. There are two registers for controlling the gripper and two registers for getting the status of the gripper.
-
-  **Commands**: Set the first two registers (starting at 1) to control the initialization and movement of the gripper. 
-  
-  | Initialise Gripper [1] | 2nd bit | 1st bit |      Command     |
-  |:----------------------:|:-------:|:-------:|:----------------:|
-  |            0           |    0    |    0    |    Do Nothing    |
-  |            1           |    0    |    1    |    Do Nothing    |
-  |            2           |    1    |    0    |   Reset Gripper  |
-  |            3           |    1    |    1    | Activate Gripper |
-  
-  | Control Gripper [2] | 2nd bit | 1st bit |    Command    |
-  |:-------------------:|:-------:|:-------:|:-------------:|
-  |          0          |    0    |    0    |   Do Nothing  |
-  |          1          |    0    |    1    |   Do Nothing  |
-  |          2          |    1    |    0    |  Open Gripper |
-  |          3          |    1    |    1    | Close Gripper |
-  
-  NOTE: To perform movements on the gripper, make sure to set the 2nd bit of *Initialise Gripper [1]* to 0.  
-
-  
-    **Status**: Read the third and forth registers to get information on the status and movement of the gripper. 
-  
-  | Gripper Status [3] | 2nd bit | 1st bit |       Status       |
-  |:------------------:|:-------:|:-------:|:------------------:|
-  |          0         |    0    |    0    |    Gripper Reset   |
-  |          1         |    0    |    1    | Gripper Activating |
-  |          2         |    1    |    0    |  Gripper Activated |
-  |          3         |    1    |    1    |      Not Used      |
-  
-  | Gripper Movement [4] | Moving (0) /  Stopped (1) | Open (0) / Close (1) |       Status      |
-  |:--------------------:|:-------------------------:|:--------------------:|:-----------------:|
-  |           0          |             0             |           0          |  Moving and Open  |
-  |           1          |             0             |           1          | Moving and Closed |
-  |           2          |             1             |           0          |  Stopped and Open |
-  |           3          |             1             |           1          | Stopped and Close |
-  
-  
+1. Press MENUS.
+2. Select I/O.
+3. Press F1, [TYPE], and select Modbus TCP. You will see a screen similar to the following.
+4. 
 
 
-## <a name="history"></a>History
 
-* **June 6, 2016**: Version 1.0 released. Tested with the S-Model of the Robotiq Gripper and with a fake modbus slave, simulating the robot.
+## Group I/O
 
-## <a name="credits"></a>Credits
+1. Press MENUS.
+2. Select I/O.
+3. Press F1, [TYPE], and select Group. You will see a screen similar to the following.
 
-* Developed by [Rafael Arrais](https://github.com/rarrais). 
-* Robotiq ROS Package by [Shaun Edwards](https://github.com/shaun-edwards). 
-* Modbus ROS Package by [Sven Bock](https://github.com/sven-bock). 
+2
+
+4. Press F2, CONFIG, and configure the following group outputs.
+
+3
+
+5. Press F3, IN / OUT, and perform the same configuration for group inputs.
+
+4
+
+Note: You can press Next and then F2, VERIFY, to check if the options selected are valid.
+
+## Digital I/O
+
+1. Press MENUS.
+2. Select I/O.
+3. Press F1, [TYPE], and select Digital. You will see a screen similar to the following.
+
+5
+
+4. Press F2, CONFIG, and configure the following digital outputs.
+
+6
+
+5. Press F3, IN / OUT, and perform the same configuration for digital inputs.
+
+7
+
+## Application Example
+
+1. Import the TESTJOB.tp file. This file presents an example of operation. Please refer to the README.md on the root of this repository for information on how the bits are mapped. 
+
+
