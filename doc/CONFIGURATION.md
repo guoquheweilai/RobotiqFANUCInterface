@@ -1,6 +1,6 @@
 # FANUC Robot Configuration
 
-Follow the Modbus TCP Interface Operators Manual to define the TCP/IP Interface and the Modbus protocol. Refer to the following steps for configuring the internal data arrangement. 
+Follow the following guide to configure the TCP / IP Interface, the Modbus protocol and the internal data arrangement. Refer to the FANUC Modbus TCP Interface Operators Manual for further information.
 
 ## TCP/IP
 
