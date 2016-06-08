@@ -8,6 +8,9 @@ Follow the Modbus TCP Interface Operators Manual to define the TCP/IP Interface 
 2. Select Setup.
 3. Press F1, [TYPE], and select Host Comm. Next, select TCP / IP. You will see a screen similar to the following.
 
+![1](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/1.png)
+
+
 Note: Make sure to alter the Robot IP Address to match your network.
 
 ## Modbus Settings
