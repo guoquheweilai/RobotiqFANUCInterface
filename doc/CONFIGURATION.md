@@ -8,8 +8,7 @@ Follow the Modbus TCP Interface Operators Manual to define the TCP/IP Interface 
 2. Select Setup.
 3. Press F1, [TYPE], and select Host Comm. Next, select TCP / IP. You will see a screen similar to the following.
 
-![1](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/1.png)
-
+![0](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/0.png)
 
 Note: Make sure to alter the Robot IP Address to match your network.
 
@@ -18,8 +17,8 @@ Note: Make sure to alter the Robot IP Address to match your network.
 1. Press MENUS.
 2. Select I/O.
 3. Press F1, [TYPE], and select Modbus TCP. You will see a screen similar to the following.
-4. 
 
+![1](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/1.png)
 
 
 ## Group I/O
@@ -28,15 +27,15 @@ Note: Make sure to alter the Robot IP Address to match your network.
 2. Select I/O.
 3. Press F1, [TYPE], and select Group. You will see a screen similar to the following.
 
-2
+![2](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/2.png)
 
 4. Press F2, CONFIG, and configure the following group outputs.
 
-3
+![3](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/3.png)
 
 5. Press F3, IN / OUT, and perform the same configuration for group inputs.
 
-4
+![4](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/4.png)
 
 Note: You can press Next and then F2, VERIFY, to check if the options selected are valid.
 
@@ -46,15 +45,15 @@ Note: You can press Next and then F2, VERIFY, to check if the options selected a
 2. Select I/O.
 3. Press F1, [TYPE], and select Digital. You will see a screen similar to the following.
 
-5
+![5](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/5.png)
 
 4. Press F2, CONFIG, and configure the following digital outputs.
 
-6
+![6](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/6.png)
 
 5. Press F3, IN / OUT, and perform the same configuration for digital inputs.
 
-7
+![7](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/7.png)
 
 ## Application Example
 
