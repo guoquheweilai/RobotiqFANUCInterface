@@ -59,4 +59,6 @@ Note: You can press Next and then F2, VERIFY, to check if the options selected a
 
 1. Import the TESTJOB.tp file. This file presents an example of operation. Please refer to the README.md on the root of this repository for information on how the bits are mapped. 
 
+![A](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/a.PNG)
+![B](https://raw.githubusercontent.com/rarrais/RobotiqFANUCInterface/master/doc/b.PNG)
 
