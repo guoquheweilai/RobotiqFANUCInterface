@@ -8,7 +8,7 @@ from robotiq_s_model_control.msg import _SModel_robot_input  as inputMsg
 
 NUM_REGISTERS = 2
 ADDRESS_READ_START = 10000
-ADDRESS_WRITE_START = 1
+ADDRESS_WRITE_START = 0
 
 pub_gripper = rospy.Publisher('SModelRobotOutput', outputMsg.SModel_robot_output, queue_size=10)
 pub_robot = rospy.Publisher("modbus_wrapper/output", HoldingRegister,queue_size=500)
